@@ -70,11 +70,12 @@ function Home() {
     setError(false);
     const urls = [
       "https://dummyjson.com/products/category/smartphones?limit=10",
-      "/api/products/category/laptops?limit=10",
-      "/api/products/category/tablets?limit=5",
-      "/api/products/category/mobile-accessories?limit=5",
-      "/api/products/category/womens-watches?limit=5",
-      "/api/products/category/mens-watches?limit=5",
+      "https://dummyjson.com/products/category/laptops?limit=10",
+      "https://dummyjson.com/products/category/tablets?limit=5",
+      "https://dummyjson.com/products/category/mobile-accessories?limit=5",
+      "https://dummyjson.com/products/category/womens-watches?limit=5",
+      "https://dummyjson.com/products/category/mens-watches?limit=5",
+      
     ];
     Promise.all(urls.map(url => fetch(url).then(r => r.json())))
       .then(results => {
