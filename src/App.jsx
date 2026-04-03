@@ -8,7 +8,6 @@ import Orders from "./pages/Orders";
 import Wishlist from "./pages/Wishlist";
 import Navbar from "./components/Navbar";
 import LoginPage from "./pages/LoginPage";
-import { BrowserRouter } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
   const { isSignedIn, isLoaded } = useAuth();
