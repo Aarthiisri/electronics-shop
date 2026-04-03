@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
@@ -32,7 +32,7 @@ function ProtectedRoute({ children }) {
 
 function App() {
   return (
-    
+    <HashRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -43,6 +43,7 @@ function App() {
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      </HashRouter>
    
   );
 }
