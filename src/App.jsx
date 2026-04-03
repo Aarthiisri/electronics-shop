@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "@clerk/clerk-react";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
@@ -15,19 +15,22 @@ function ProtectedRoute({ children }) {
   if (!isLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-500 text-sm">Loading...</p>
+        </div>
       </div>
     );
   }
 
   return isSignedIn
     ? <><Navbar />{children}</>
-    : <Navigate to="/login" />;
+    : <Navigate to="/login" replace />;
 }
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -36,9 +39,9 @@ function App() {
         <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
