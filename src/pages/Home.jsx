@@ -69,7 +69,7 @@ function Home() {
     setLoading(true);
     setError(false);
     const urls = [
-      "/api/products/category/smartphones?limit=10",
+      "https://dummyjson.com/products/category/smartphones?limit=10",
       "/api/products/category/laptops?limit=10",
       "/api/products/category/tablets?limit=5",
       "/api/products/category/mobile-accessories?limit=5",

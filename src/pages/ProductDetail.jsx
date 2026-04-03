@@ -15,7 +15,7 @@ function ProductDetail() {
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/products/${id}`)
+    fetch(`https://dummyjson.com/products/${id}`)
       .then(res => res.json())
       .then(data => {
         setProduct(data);
