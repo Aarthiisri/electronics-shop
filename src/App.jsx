@@ -32,7 +32,7 @@ function ProtectedRoute({ children }) {
 
 function App() {
   return (
-    <BrowserRouter basename="/electronics-shop">
+    
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -43,7 +43,7 @@ function App() {
         <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter >
+   
   );
 }
 
