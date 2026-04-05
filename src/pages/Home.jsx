@@ -69,13 +69,12 @@ function Home() {
     setLoading(true);
     setError(false);
     const urls = [
-      "https://dummyjson.com/products/category/smartphones?limit=10",
-      "https://dummyjson.com/products/category/laptops?limit=10",
-      "https://dummyjson.com/products/category/tablets?limit=5",
-      "https://dummyjson.com/products/category/mobile-accessories?limit=5",
-      "https://dummyjson.com/products/category/womens-watches?limit=5",
-      "https://dummyjson.com/products/category/mens-watches?limit=5",
-      
+      "/api/products/category/smartphones?limit=10",
+      "/api/products/category/laptops?limit=10",
+      "/api/products/category/tablets?limit=5",
+      "/api/products/category/mobile-accessories?limit=5",
+      "/api/products/category/womens-watches?limit=5",
+      "/api/products/category/mens-watches?limit=5",
     ];
     Promise.all(urls.map(url => fetch(url).then(r => r.json())))
       .then(results => {
@@ -263,7 +262,7 @@ function Home() {
             className="w-full px-4 py-2.5 rounded-xl border border-gray-300 outline-none focus:border-orange-400 bg-white text-sm"/>
         </div>
 
-        <div className="flex justify-around gap-2 overflow-x-auto pb-2 mb-4 scrollbar-hide">
+        <div className="flex justify-around  gap-2 overflow-x-auto pb-2 mb-4 scrollbar-hide">
           {CATEGORIES.map(cat => (
             <button key={cat.value} onClick={() => setCategory(cat.value)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 transition
