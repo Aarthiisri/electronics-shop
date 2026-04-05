@@ -66,28 +66,31 @@ function Home() {
   }, []);
 
   function fetchProducts() {
-    setLoading(true);
-    setError(false);
-    const urls = [
-      "/api/products/category/smartphones?limit=10",
-      "/api/products/category/laptops?limit=10",
-      "/api/products/category/tablets?limit=5",
-      "/api/products/category/mobile-accessories?limit=5",
-      "/api/products/category/womens-watches?limit=5",
-      "/api/products/category/mens-watches?limit=5",
-    ];
-    Promise.all(urls.map(url => fetch(url).then(r => r.json())))
-      .then(results => {
-        const all = results.flatMap(r => r.products || []);
-        setProducts(all);
-        setFiltered(all);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  }
+  setLoading(true);
+  setError(false);
+
+  // ✅ Direct DummyJSON URL
+  const urls = [
+    "https://dummyjson.com/products/category/smartphones?limit=10",
+    "https://dummyjson.com/products/category/laptops?limit=10",
+    "https://dummyjson.com/products/category/tablets?limit=5",
+    "https://dummyjson.com/products/category/mobile-accessories?limit=5",
+    "https://dummyjson.com/products/category/womens-watches?limit=5",
+    "https://dummyjson.com/products/category/mens-watches?limit=5",
+  ];
+
+  Promise.all(urls.map(url => fetch(url).then(r => r.json())))
+    .then(results => {
+      const all = results.flatMap(r => r.products || []);
+      setProducts(all);
+      setFiltered(all);
+      setLoading(false);
+    })
+    .catch(() => {
+      setError(true);
+      setLoading(false);
+    });
+}
 
   useEffect(() => { fetchProducts(); }, []);
 
@@ -105,7 +108,7 @@ function Home() {
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center gap-4 p-4">
         <div className="text-5xl">😕</div>
-        <h2 className="text-lg font-bold text-gray-700">Products load ஆகலை!</h2>
+        <h2 className="text-lg font-bold text-gray-700">the Products are not lodding!</h2>
         <button onClick={fetchProducts}
           className="bg-orange-500 text-white px-6 py-2.5 rounded-xl font-semibold text-sm">
           🔄 Retry
